@@ -60,7 +60,7 @@ data:
                   secret: ${GITHUB_JENKINS_INCD_TOKEN} # gitlab personal access token
     unclassified:
       location:
-        url: https://jenkins-gh.a.incd.pt/
+        url: https://jenkins2.a.incd.pt/
         adminAddress: jenkins-incd@lip.pt
       gitHubPluginConfig:
         configs:
