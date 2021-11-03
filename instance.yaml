@@ -28,33 +28,33 @@ spec:
   master:
     basePlugins:
     - name: kubernetes
-      version: "1.30.1"
+      version: "1.30.6"
     - name: workflow-job
-      version: "2.41"
+      version: "2.42"
     - name: workflow-aggregator
       version: "2.6"
     - name: git
-      version: "4.8.2"
+      version: "4.10.0"
     - name: job-dsl
-      version: "1.77"
+      version: "1.78"
     - name: configuration-as-code
-      version: "1.53"
+      version: "1.54"
     - name: kubernetes-credentials-provider
       version: "0.20"
     - name: github-oauth
-      version: "0.33"
+      version: "0.34"
     - name: matrix-auth
-      version: "2.6.7"
+      version: "2.6.8"
     - name: slack
       version: "2.48"
     - name: blueocean
-      version: "1.24.6"
+      version: "1.25.1"
     - name: docker-plugin
-      version: "1.2.2"
+      version: "1.2.3"
     - name: docker-workflow
       version: "1.26"
     - name: workflow-cps-global-lib
-      version: "2.19"
+      version: "2.21"
     - name: pipeline-github-lib
       version: "1.0"
     - name: authorize-project
@@ -62,21 +62,21 @@ spec:
     - name: oauth-credentials
       version: "0.4"
     - name: generic-webhook-trigger
-      version: "1.74"
+      version: "1.77"
     - name: gitlab-branch-source
-      version: "1.5.7"
+      version: "1.5.9"
     - name: cmakebuilder
-      version: "4.0.2"
+      version: "4.1.0"
     plugins:
     - name: simple-theme-plugin
-      version: "0.6"
+      version: "0.7"
     disableCSRFProtection: false  
     securityContext:
       runAsUser: 1000
       fsGroup: 1000
     containers:
     - name: jenkins-master
-      image: jenkins/jenkins:2.303.1-alpine
+      image: jenkins/jenkins:2.303.2-alpine
       imagePullPolicy: Always
       livenessProbe:
         failureThreshold: 12
