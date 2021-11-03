@@ -1,3 +1,4 @@
+readme outdated
 # jenkins-operator-deployment
 Jenkins-Operator deployment on Kubernetes.
 
