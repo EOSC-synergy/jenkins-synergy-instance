@@ -27,51 +27,6 @@ spec:
     authorizationStrategy: createUser
   master:
     basePlugins:
-    # - name: kubernetes
-    #   version: "1.30.6"
-    # - name: workflow-job
-    #   version: "2.42"
-    # - name: workflow-aggregator
-    #   version: "2.6"
-    # - name: git
-    #   version: "4.10.0"
-    # - name: job-dsl
-    #   version: "1.78"
-    # - name: configuration-as-code
-    #   version: "1.54"
-    # - name: kubernetes-credentials-provider
-    #   version: "0.20"
-    # - name: github-oauth
-    #   version: "0.34"
-    # - name: matrix-auth
-    #   version: "2.6.8"
-    # - name: slack
-    #   version: "2.48"
-    # - name: blueocean
-    #   version: "1.25.1"
-    # - name: docker-plugin
-    #   version: "1.2.3"
-    # - name: docker-workflow
-    #   version: "1.26"
-    # - name: workflow-cps-global-lib
-    #   version: "2.21"
-    # - name: pipeline-github-lib
-    #   version: "1.0"
-    # - name: authorize-project
-    #   version: "1.4.0"
-    # - name: oauth-credentials
-    #   version: "0.4"
-    # - name: generic-webhook-trigger
-    #   version: "1.77"
-    # - name: gitlab-branch-source
-    #   version: "1.5.9"
-    # - name: cmakebuilder
-    #   version: "4.1.0"
-
-
-
-
-
     - name: kubernetes
       version: "1.31.3"
     - name: workflow-job
@@ -118,8 +73,6 @@ spec:
       version: "1.10"
     - name: pipeline-graph-analysis
       version: "1.12"
-
-
     - name: matrix-auth
       version: "3.0.1"
     - name: slack
@@ -145,7 +98,7 @@ spec:
     - name: build-timeout
       version: "1.20"
     - name: dashboard-view
-      version: "2.17"
+      version: "2.18"
     - name: docker-compose-build-step
       version: "1.0"
     - name: email-ext
@@ -175,7 +128,7 @@ spec:
     - name: seleniumhtmlreport
       version: "1.1"
     - name: ssh-agent
-      version: "1.23"
+      version: "1.24.1"
     - name: subversion
       version: "2.15.1"
     - name: throttle-concurrents
@@ -185,11 +138,13 @@ spec:
     - name: variant
       version: "1.4"
     - name: warnings-ng
-      version: "9.5.1"
+      version: "9.11.0"
     - name: ws-cleanup
       version: "0.39"
     - name: cmakebuilder
       version: "4.1.0"
+    - name: prism-api
+      version: "1.25.0-2"
     plugins:
     - name: simple-theme-plugin
       version: "0.7"
@@ -199,7 +154,7 @@ spec:
       fsGroup: 1000
     containers:
     - name: jenkins-master
-      image: jenkins/jenkins:2.319.1-lts-alpine
+      image: jenkins/jenkins:2.319.2-lts-alpine
       imagePullPolicy: Always
       livenessProbe:
         failureThreshold: 12
@@ -236,7 +191,7 @@ spec:
         value: /jenkins-home
       - name: BACKUP_COUNT
         value: "3" # keep only the 2 most recent backups
-      image: virtuslab/jenkins-operator-backup-pvc:v0.1.0 # look at backup/pvc directory
+      image: virtuslab/jenkins-operator-backup-pvc:v0.1.1 # look at backup/pvc directory
       imagePullPolicy: IfNotPresent
       volumeMounts:
       - mountPath: /jenkins-home # Jenkins home volume
