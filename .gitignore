@@ -1,2 +1,4 @@
 certs/
 secrets.yaml
+*.bak
+plugins-updated.yaml

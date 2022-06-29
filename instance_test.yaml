@@ -14,7 +14,7 @@ spec:
           name: jenkins-synergy-slack-notification
         key: url
   configurationAsCode:
-    configurations:
+    configurations: 
     - name: jenkins-synergy-configurations
     secret:
       name: "jenkins-eosc-synergy-oauth-secrets"
@@ -26,89 +26,43 @@ spec:
   jenkinsAPISettings:
     authorizationStrategy: createUser
   master:
-    basePlugins:
-    - name: kubernetes
-      version: "1.31.3"
-    - name: workflow-job
-      version: "2.42"
-    - name: workflow-aggregator
-      version: "2.6"
-    - name: git
-      version: "4.10.3"
-    - name: job-dsl
-      version: "1.78.3"
-    - name: configuration-as-code
-      version: "1.55.1"
-    - name: kubernetes-credentials-provider
-      version: "0.20"
-    - name: authentication-tokens
-      version: "1.4"
-    - name: credentials
-      version: "2.6.2"
-    - name: credentials-binding
-      version: "1.27.1"
-    - name: ssh-credentials
-      version: "1.19"
-    - name: plain-credentials
-      version: "1.8"
-    - name: kubernetes-credentials
-      version: "0.9.0"
-    - name: pipeline-stage-view
-      version: "2.21"
-    - name: pipeline-rest-api
-      version: "2.21"
-    - name: workflow-cps-global-lib
-      version: "2.21"
-    - name: git-client
-      version: "3.11.0"
-    - name: pipeline-input-step
-      version: "2.12"
-    - name: pipeline-model-definition
-      version: "1.9.3"
-    - name: pipeline-model-extensions
-      version: "1.9.3"
-    - name: jsch
-      version: "0.1.55.2"
-    - name: git-server
-      version: "1.10"
-    - name: pipeline-graph-analysis
-      version: "1.12"
-    - name: matrix-auth
-      version: "3.0.1"
+    plugins:
+    - name: simple-theme-plugin
+      version: "103.va_161d09c38c7"
     - name: slack
-      version: "2.49"
+      version: "608.v19e3b_44b_b_9ff"
     - name: blueocean
-      version: "1.25.2"
+      version: "1.25.3"
     - name: docker-plugin
-      version: "1.2.6"
+      version: "1.2.8"
     - name: docker-workflow
-      version: "1.27"
-    - name: pipeline-github-lib
-      version: "1.0"
+      version: "1.28"
     - name: github-oauth
       version: "0.37"
+    - name: pipeline-github-lib
+      version: "36.v4c01db_ca_ed16"
     - name: authorize-project
       version: "1.4.0"
     - name: oauth-credentials
       version: "0.5"
     - name: generic-webhook-trigger
-      version: "1.83"
+      version: "1.84"
     - name: gitlab-branch-source
-      version: "1.5.9"
+      version: "625.v85cf3a_400cfe"
     - name: build-timeout
       version: "1.20"
     - name: dashboard-view
-      version: "2.18"
+      version: "2.432.va_712ce35862d"
     - name: docker-compose-build-step
       version: "1.0"
     - name: email-ext
-      version: "2.83"
+      version: "2.87"
     - name: embeddable-build-status
       version: "2.0.3"
     - name: git-parameter
-      version: "0.9.13"
+      version: "0.9.16"
     - name: gradle
-      version: "1.37.1"
+      version: "1.38"
     - name: hashicorp-vault-pipeline
       version: "1.3"
     - name: jquery-detached
@@ -116,13 +70,13 @@ spec:
     - name: jaxb
       version: "2.3.0.1"
     - name: ldap
-      version: "2.7"
+      version: "2.9"
     - name: openstack-cloud
-      version: "2.60"
+      version: "2.61"
     - name: pipeline-utility-steps
-      version: "2.10.0"
+      version: "2.12.0"
     - name: rebuild
-      version: "1.32"
+      version: "1.33.1"
     - name: selenium-builder
       version: "1.14"
     - name: seleniumhtmlreport
@@ -130,31 +84,28 @@ spec:
     - name: ssh-agent
       version: "1.24.1"
     - name: subversion
-      version: "2.15.1"
+      version: "2.15.4"
     - name: throttle-concurrents
-      version: "2.4"
+      version: "2.8"
     - name: timestamper
-      version: "1.13"
+      version: "1.17"
     - name: variant
       version: "1.4"
     - name: warnings-ng
-      version: "9.11.0"
+      version: "9.11.1"
     - name: ws-cleanup
-      version: "0.39"
+      version: "0.42"
     - name: cmakebuilder
-      version: "4.1.0"
+      version: "4.1.1"
     - name: prism-api
-      version: "1.25.0-2"
-    plugins:
-    - name: simple-theme-plugin
-      version: "0.7"
-    disableCSRFProtection: false
+      version: "1.26.0-2"
+    disableCSRFProtection: false  
     securityContext:
       runAsUser: 1000
       fsGroup: 1000
     containers:
     - name: jenkins-master
-      image: nexusrepo.a.incd.pt:8083/jenkins/jenkins:2.319.2-alpine
+      image: jenkins/jenkins:2.319.2-lts-alpine
       imagePullPolicy: Always
       livenessProbe:
         failureThreshold: 12
@@ -162,7 +113,7 @@ spec:
           path: /login
           port: http
           scheme: HTTP
-        initialDelaySeconds: 100
+        initialDelaySeconds: 600
         periodSeconds: 10
         successThreshold: 1
         timeoutSeconds: 5
@@ -172,7 +123,7 @@ spec:
           path: /login
           port: http
           scheme: HTTP
-        initialDelaySeconds: 80
+        initialDelaySeconds: 580
         periodSeconds: 10
         successThreshold: 1
         timeoutSeconds: 1
@@ -191,7 +142,7 @@ spec:
         value: /jenkins-home
       - name: BACKUP_COUNT
         value: "3" # keep only the 2 most recent backups
-      image: nexusrepo.a.incd.pt:8083/virtuslab/jenkins-operator-backup-pvc:v0.1.1 # look at backup/pvc directory
+      image: virtuslab/jenkins-operator-backup-pvc:v0.1.1 # look at backup/pvc directory
       imagePullPolicy: IfNotPresent
       volumeMounts:
       - mountPath: /jenkins-home # Jenkins home volume
@@ -233,4 +184,4 @@ spec:
     description: "Jenkins Operator repository"
     repositoryBranch: main
     repositoryUrl: https://github.com/lip-casc/jenkins-seed-jobs
-
+   

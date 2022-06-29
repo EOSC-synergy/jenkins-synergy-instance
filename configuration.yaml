@@ -26,22 +26,22 @@ data:
     jenkins.save()
   2-system-message.yaml: |
     jenkins:
-      systemMessage: "Configuration as Code integration works!!!"
+      systemMessage: "Hello to brand new EOSC-synergy jenkins!"
   3-configure-github-auth.yaml: |
     jenkins:
       securityRealm:
         github:
           githubWebUri: "https://github.com"
           githubApiUri: "https://api.github.com"
-          clientID: "${jenkins-incd-github-clientID}"
-          clientSecret: "${jenkins-incd-github-Secret}"
+          clientID: "${jenkins-incd-github-EOSCsynergyOAuth-clientID}"
+          clientSecret: "${jenkins-incd-github-EOSCsynergyOAuth-clientSecret}"
           oauthScopes: "read:org,user:email,repo"
   4-configure-github-authorization.yaml: |
     jenkins:
       authorizationStrategy:
         gitHub:
           adminUserNames: "jenkins-operator, tiagofglip, samuelbernardolip"
-          organizationNames: "lip-casc"
+          organizationNames: "EOSC-synergy"
           authenticatedUserReadPermission: false
           useRepositoryPermissions: false
           authenticatedUserCreateJobPermission: false
@@ -57,7 +57,7 @@ data:
               - string:
                   scope: SYSTEM
                   id: github_jenkins_incd_token
-                  secret: ${GITHUB_JENKINS_INCD_TOKEN} # gitlab personal access token
+                  secret: ${GITHUB_JENKINS_INCD_TOKEN} # github personal access token
     unclassified:
       location:
         url: https://jenkins2.a.incd.pt/
