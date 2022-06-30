@@ -62,7 +62,7 @@ spec:
     - name: gitlab-branch-source
       version: "629.vb_cc76608e806"
     - name: build-timeout
-      version: "1.21"
+      version: "1.20"
     - name: dashboard-view
       version: "2.432.va_712ce35862d"
     - name: docker-compose-build-step
