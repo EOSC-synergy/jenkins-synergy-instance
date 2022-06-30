@@ -1,14 +1,8 @@
-kubernetes
-workflow-job
-workflow-aggregator
-git
-job-dsl
-configuration-as-code
-kubernetes-credentials-provider
 simple-theme-plugin
 slack
 blueocean
 docker-plugin
+docker-workflow
 github-oauth
 pipeline-github-lib
 authorize-project
